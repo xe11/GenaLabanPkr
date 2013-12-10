@@ -1,42 +1,45 @@
 /**	коды сиситемных запросов/сообщений: 1-999,
-	коды игровых сообщений: 1000-1999*/
+	коды игровых сообщений: 1000-1999 */
+/**	карты нумеруются: 2,3,4,5,6,7,8,9,10,11-J,12-Q,13-K,14-A */
+/**	масти:	пика - 1, крести - 2, чирва - 3, буба - 4 */
+/**	запись карты в JSON: { type: 5, suit: 2 } */
 
 /*******************System******************************/
 /*запрос на авторизацию(C)*/	JSON{ code: 1, login: "", password: 12345 }
 
 /*передача данных стола(S)*/	JSON { 
-					code: 2, 
-					idTable: 111, 
-					profiles: [ { Name: "", Image: 1, money: 123, sitNumber: 1 }, {...}, {...} ], 
-					bank: 123, 
-					diller: 1, 
-					activeProfile: 2 
+					code: 			2, 
+					idTable: 		111, 
+					profiles: 		[ { Name: "", Image: 1, money: 123, sitNumber: 1, bet: 123 }, {...}, {...} ],
+					bank: 			123, 
+					diller: 		1, 
+					activeProfile: 	2 
 				}
 
 /*передача данных игрового 
 профиля(S)*/			JSON {
-						code: 3,
-						Name: "",
-						login: "",
-						Image: 1,
-						money: 123,
+						code: 	3,
+						Name: 	"",
+						login: 	"",
+						Image: 	1,
+						money: 	123,
 						}
 /*запрос на выбор стола(C)*/
 JSON {
-	code: 4,
-	idBet: 1,
-	money: 123
+	code: 	4,
+	idBet: 	1,
+	money: 	123
 }
 	
 /*запрос на продолжение игры(C)*/
 JSON {
-	code: 5,
-	idTable: 111
+	code: 		5,
+	idTable: 	111
 }
 
 /*errror input on table(S)*/
 JSON {
-	code:6
+	code: 6
 }
 
 /*exit table(C)*/
@@ -51,8 +54,8 @@ JSON {
 
 /*transfer information of money(S)*/
 JSON {
-	code: 9,
-	money: 123
+	code: 	9,
+	money: 	123
 }
 
 /*exit aplication(C)*/
@@ -67,9 +70,9 @@ JSON {
 
 /*request registrtion(K)*/
 JSON {
-	code: 12,
-	login: "",
-	password: 123,
+	code: 		12,
+	login: 		"",
+	password: 	123,
 }
 
 /*error login registration(S)*/
@@ -89,31 +92,31 @@ JSON {
 
 /*message new player(S)*/
 JSON {
-	code: 16,
-	profile: { Name: "", Image: 1, money: 123, sitNumber: 1 }
+	code: 		16,
+	profile: 	{ Name: "", Image: 1, money: 123, sitNumber: 1 }
 }
 
 /*message exit some player(S)*/
 JSON {
-	code: 17,
-	sitNumber: 1
+	code: 		17,
+	sitNumber: 	1
 }
 
 /*message active profile(S)*/
 JSON {
-	code: 18,
-	sitNumber: 1
+	code: 		18,
+	sitNumber: 	1
 }
 
 /*request a top-up on table(C)*/
 JSON {
-	code: 19,
-	money: 123
+	code: 	19,
+	money: 	123
 }
 
 /*confirmation top-up on table(S)*/
 JSON {
-	code:20
+	code: 20
 }
 
 /*error top-up on table(S)*/
@@ -121,15 +124,26 @@ JSON {
 	code: 21
 }
 
+/*request my friends(C)*/
+JSON {
+	code: 22
+}
+
+/*transfer friends profiles*/
+JSON {
+	code: 		23,
+	friends: 	[ { name: "", state: "online/offline"}, { name: "", state: "online/offline"}, ... ]
+}
 
 
 
 /***************Game*****************************/
 
-/*message bet(C/S)*/
+
+/*message bet(C)*/
 JSON {
-	code: 1000,
-	bet: 123
+	code: 	1000,
+	bet: 	123
 }
 
 /*message check(C)*/
@@ -137,17 +151,50 @@ JSON {
 	code: 1001
 }
 
-/*message fold(C)*/
+/*message fold(C/S)*/
 JSON {
 	code: 1002
 }
 
-/*message*/
 
+/*message new game(S)*/
+JSON {
+	code: 		1003,
+	cards: 		[ { type: 5, suit: 2 }, { type: 14, suit: 1 } ],
+	firstBet: 	123
+}
 
+/*message new card on table(S)*/
+JSON {
+	code: 		1004,
+	cards: 		[ { type: 5, suit: 2 }, { type: 14, suit: 1 }, {...} ]
+}
 
+/*message result game(S)*/
+JSON {
+	code: 			1005,
+	cardsPlayers: 	[ { sitNumber: 1, first_card: { type: 5, suit: 2 }, second_card: { type: 14, suit: 1 } }, {...}, ... ],
+	winners: 		[ {sitNumber: 1, bank: 123}, {...}, {...} ]
+}
 
+/*message bet some player(S)*/
+JSON {
+	code: 		1006,
+	sitNumber: 	1,
+	bet: 		123
+}
 
+/*message check some player(S)*/
+JSON {
+	code: 		1007,
+	sitNumber: 	1
+}
+
+/*message fold some player(S)*/
+JSON {
+	code: 		1008,
+	sitNumber: 	1
+}
 
 
 
