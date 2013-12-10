@@ -1,0 +1,157 @@
+/**	коды сиситемных запросов/сообщений: 1-999,
+	коды игровых сообщений: 1000-1999*/
+
+/*******************System******************************/
+/*запрос на авторизацию(C)*/	JSON{ code: 1, login: "", password: 12345 }
+
+/*передача данных стола(S)*/	JSON { 
+					code: 2, 
+					idTable: 111, 
+					profiles: [ { Name: "", Image: 1, money: 123, sitNumber: 1 }, {...}, {...} ], 
+					bank: 123, 
+					diller: 1, 
+					activeProfile: 2 
+				}
+
+/*передача данных игрового 
+профиля(S)*/			JSON {
+						code: 3,
+						Name: "",
+						login: "",
+						Image: 1,
+						money: 123,
+						}
+/*запрос на выбор стола(C)*/
+JSON {
+	code: 4,
+	idBet: 1,
+	money: 123
+}
+	
+/*запрос на продолжение игры(C)*/
+JSON {
+	code: 5,
+	idTable: 111
+}
+
+/*errror input on table(S)*/
+JSON {
+	code:6
+}
+
+/*exit table(C)*/
+JSON {
+	code: 7
+}
+
+/*request money(C)*/
+JSON {
+	code: 8
+}
+
+/*transfer information of money(S)*/
+JSON {
+	code: 9,
+	money: 123
+}
+
+/*exit aplication(C)*/
+JSON {
+	code: 10
+}
+
+/*exit profile(C)*/
+JSON {
+	code: 11
+}
+
+/*request registrtion(K)*/
+JSON {
+	code: 12,
+	login: "",
+	password: 123,
+}
+
+/*error login registration(S)*/
+JSON {
+	code: 13
+}
+
+/*registration confirmation(S)*/
+JSON {
+	code: 14
+}
+
+/*error authentication(S)*/
+JSON {
+	code: 15
+}
+
+/*message new player(S)*/
+JSON {
+	code: 16,
+	profile: { Name: "", Image: 1, money: 123, sitNumber: 1 }
+}
+
+/*message exit some player(S)*/
+JSON {
+	code: 17,
+	sitNumber: 1
+}
+
+/*message active profile(S)*/
+JSON {
+	code: 18,
+	sitNumber: 1
+}
+
+/*request a top-up on table(C)*/
+JSON {
+	code: 19,
+	money: 123
+}
+
+/*confirmation top-up on table(S)*/
+JSON {
+	code:20
+}
+
+/*error top-up on table(S)*/
+JSON {
+	code: 21
+}
+
+
+
+
+/***************Game*****************************/
+
+/*message bet(C/S)*/
+JSON {
+	code: 1000,
+	bet: 123
+}
+
+/*message check(C)*/
+JSON {
+	code: 1001
+}
+
+/*message fold(C)*/
+JSON {
+	code: 1002
+}
+
+/*message*/
+
+
+
+
+
+
+
+
+
+
+
+
